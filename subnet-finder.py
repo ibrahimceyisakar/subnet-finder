@@ -1,8 +1,6 @@
 import re
 from ipaddress import IPv4Address
 from math import floor, log2
-from socket import IPPROTO_IPV4
-from telnetlib import IP
 
 
 class CustomIPManager(IPv4Address):
