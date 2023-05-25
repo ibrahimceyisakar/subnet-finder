@@ -74,11 +74,12 @@ class CustomIPManager(IPv4Address):
 
     @classmethod
     def find_smallest(cls, ip_list):
-        """Find the smallest IPv4 address in a list of IPv4 addresses"""
+        """Find the smallest binary IPv4 address in a list of IPv4 addresses"""
         smallest_ip = ip_list[0]
         for ip in ip_list:
             if ip < smallest_ip:
                 smallest_ip = ip
+        print(smallest_ip)
         return smallest_ip
 
     @classmethod
@@ -88,6 +89,7 @@ class CustomIPManager(IPv4Address):
         for ip in ip_list:
             if ip > largest_ip:
                 largest_ip = ip
+        print(largest_ip)
         return largest_ip
 
 
@@ -98,7 +100,9 @@ class MinimalSubnetFinder:
 
     def find(self):
         first_different_bit_pos = CustomIPManager.find_first_different_bit(
-            self.ip_list[0], self.ip_list[1]
+            # self.ip_list[0], self.ip_list[1]
+            CustomIPManager.find_smallest(self.ip_list),
+            CustomIPManager.find_largest(self.ip_list),
         )
 
         print(first_different_bit_pos)
