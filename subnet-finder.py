@@ -77,7 +77,6 @@ class CustomIPManager(IPv4Address):
         for ip in ip_list:
             if ip < smallest_ip:
                 smallest_ip = ip
-        print(smallest_ip)
         return smallest_ip
 
     @classmethod
@@ -87,14 +86,13 @@ class CustomIPManager(IPv4Address):
         for ip in ip_list:
             if ip > largest_ip:
                 largest_ip = ip
-        print(largest_ip)
         return largest_ip
 
 
 class MinimalSubnetFinder:
     def __init__(self, ip_list):
         self.ip_list = list(map(lambda ip: IPv4Address(ip), ip_list))
-        print(self.ip_list)
+        print("IP List: ", self.ip_list)
 
     def find(self):
         first_different_bit_pos = CustomIPManager.find_first_different_bit(
@@ -103,16 +101,14 @@ class MinimalSubnetFinder:
             CustomIPManager.find_largest(self.ip_list),
         )
 
-        print(first_different_bit_pos)
         binary_result = CustomIPManager.first_different_pos_to_binary_ipv4(
             first_different_bit_pos
         )
-        print(binary_result)
 
-        print(CustomIPManager.from_binary_repr(binary_result))
+        return CustomIPManager.from_binary_repr(binary_result)
 
 
 if __name__ == "__main__":
     ip_list = ["128.42.5.17", "128.42.5.67", "192.160.2.0"]
     subnet_finder = MinimalSubnetFinder(ip_list)
-    subnet_finder.find()
+    print("Calculated subnet: ", subnet_finder.find())
