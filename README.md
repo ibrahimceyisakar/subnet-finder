@@ -4,4 +4,4 @@ Python program to find smallest spanning subnet from multiple given IPv4 address
 Instructions:
 Clone the project and run the command:
 
-python subnet-finder.py
+  python subnet-finder.py
